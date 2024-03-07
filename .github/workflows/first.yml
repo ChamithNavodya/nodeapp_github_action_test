@@ -21,7 +21,7 @@ jobs:
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
             --push \
-            --tag yourdockerhubusername/yourimagename:latest \
+            --tag chamith97/first_try:latest \
             .
 
       - name: Login to Docker Hub
