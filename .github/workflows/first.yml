@@ -5,29 +5,30 @@ on:
     branches:
       - master
   merge:
-    branchaes:
+    branches:
       - master
+
 jobs:
   build_and_push_docker_image:
     runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-        - name: Set up Docker Buildx
-          uses: docker/setup-buildx-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-        - name: Build Docker Image
-          run: |
-            docker buildx build \
-              --platform linux/amd64,linux/arm64 \
-              --push \
-              --tag yourdockerhubusername/yourimagename:latest \
-              .
+      - name: Build Docker Image
+        run: |
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            --push \
+            --tag yourdockerhubusername/yourimagename:latest \
+            .
 
-        - name: Login to Docker Hub
-          uses: docker/login-action@v1
-          with:
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
