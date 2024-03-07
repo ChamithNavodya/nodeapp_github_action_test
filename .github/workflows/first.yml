@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  merge:
-    branches:
-      - master
 
 jobs:
   build_and_push_docker_image:
